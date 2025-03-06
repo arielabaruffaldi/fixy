@@ -1,0 +1,19 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.packageManager": "npm",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.alwaysShowStatus": true,
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "editor.formatOnSave": false
+}
