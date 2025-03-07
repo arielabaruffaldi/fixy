@@ -1,6 +1,6 @@
 export const typography = {
   fontFamily: {
-    primary: 'OpenSans',
+    primary: 'OpenSansRegular',
   },
   fontSize: {
     xs: 12,
@@ -11,9 +11,9 @@ export const typography = {
     xxl: 32,
   },
   fontWeight: {
-    regular: '400' as const,
-    bold: '700' as const,
-    medium: '500' as const,
-    light: '300' as const,
+    regular: 'OpenSansRegular',
+    medium: 'OpenSansMedium',
+    bold: 'OpenSansBold',
+    light: 'OpenSansLight',
   },
 };

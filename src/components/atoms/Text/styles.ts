@@ -21,24 +21,24 @@ export const createStyles = (theme: Theme) =>
       textAlign: 'left',
     },
     light: {
-      fontFamily: typography.fontFamily.primary,
-      fontWeight: typography.fontWeight.light,
+      fontFamily: typography.fontWeight.light,
     },
     medium: {
-      fontSize: typography.fontSize.md,
+      fontFamily: typography.fontWeight.medium,
     },
     regular: {
-      fontFamily: typography.fontFamily.primary,
-      fontWeight: typography.fontWeight.regular,
+      fontFamily: typography.fontWeight.regular,
     },
     bold: {
-      fontFamily: typography.fontFamily.primary,
-      fontWeight: typography.fontWeight.bold,
+      fontFamily: typography.fontWeight.bold,
     },
     right: {
       textAlign: 'right',
     },
     small: {
       fontSize: typography.fontSize.sm,
+    },
+    xsmall: {
+      fontSize: typography.fontSize.xs,
     },
   });

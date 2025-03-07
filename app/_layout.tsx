@@ -5,11 +5,17 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
-import { useColorScheme } from 'react-native';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-import OpenSansFont from '@/src/assets/fonts/OpenSans-VariableFont.ttf';
-import { darkTheme, lightTheme } from '@/src/theme/colors';
+// import OpenSansFontBold from '@/src/assets/fonts/OpenSans-Bold.ttf';
+// import OpenSansFontLight from '@/src/assets/fonts/OpenSans-Light.ttf';
+// import OpenSansFontMedium from '@/src/assets/fonts/OpenSans-Medium.ttf';
+// import OpenSansFontRegular from '@/src/assets/fonts/OpenSans-Regular.ttf';
+import OpenSansFontBold from '@/src/assets/fonts/OpenSans-Bold.ttf';
+import OpenSansFontLight from '@/src/assets/fonts/OpenSans-Light.ttf';
+import OpenSansFontMedium from '@/src/assets/fonts/OpenSans-Medium.ttf';
+import OpenSansFontRegular from '@/src/assets/fonts/OpenSans-Regular.ttf';
+import { useThemeStore } from '@/src/stores/theme/theme.store';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -17,11 +23,18 @@ SplashScreen.preventAutoHideAsync();
 const queryClient = new QueryClient();
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
+  const { themeObject, initTheme } = useThemeStore();
+
   const [loaded] = useFonts({
-    OpenSans: OpenSansFont,
+    OpenSansBold: OpenSansFontBold,
+    OpenSansLight: OpenSansFontLight,
+    OpenSansMedium: OpenSansFontMedium,
+    OpenSansRegular: OpenSansFontRegular,
   });
-  const theme = colorScheme === 'dark' ? darkTheme : lightTheme;
+
+  useEffect(() => {
+    initTheme(); // Inicializa el tema desde AsyncStorage
+  }, []);
 
   useEffect(() => {
     if (loaded) {
@@ -34,7 +47,7 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={theme}>
+    <ThemeProvider value={themeObject}>
       <QueryClientProvider client={queryClient}>
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="(main)/(tabs)" options={{ headerShown: false }} />
